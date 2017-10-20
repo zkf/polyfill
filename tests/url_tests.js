@@ -21,6 +21,12 @@ QUnit.test('URL IDL', function(assert) {
   assert.equal(typeof url.href, 'string', 'href');
 });
 
+QUnit.test('URL with invalid parameters', function(assert) {
+  var str = 'http://example.com:8080/foo/bar?a=%F8';
+  var url = new URL('http://example.com:8080/foo/bar?a=%F8');
+  assert.equal(url.toString(), str);
+});
+
 QUnit.test('URL Stringifying', function(assert) {
   assert.equal(String(new URL('http://example.com')), 'http://example.com/');
   assert.equal(String(new URL('http://example.com:8080')), 'http://example.com:8080/');
